@@ -11,4 +11,12 @@ public class Menu {
 		}
 		return items;
 	}
+	
+	public void addItem(Item i) {
+		this.menuItems.add(i);
+	}
+	
+	public void removeItem(Item i) {
+		this.menuItems.remove(i);
+	}
 }
