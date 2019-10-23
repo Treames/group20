@@ -1,6 +1,7 @@
 package testCMS;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
@@ -24,16 +25,18 @@ public class TestDish {
 	
 	@Test
 	public void dish_getPrice3() {
-		Dish d1 = new Dish("Noodles", -0.01, 1);
-		double price = d1.getPrice();
-		assertEquals(-1.0, price, 0);
+		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
+			new Dish("Noodles", -0.01, 1); 
+		});
+		assertEquals("Negative price", ex.getMessage());
 	}
 	
 	@Test
 	public void dish_getPrice4() {
-		Dish d1 = new Dish("Noodles", -10.0, 1);
-		double price = d1.getPrice();
-		assertEquals(-1.0, price, 0);
+		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
+			new Dish("Noodles", -10.0, 1); 
+		});
+		assertEquals("Negative price", ex.getMessage());
 	}
 	
 	@Test
@@ -42,4 +45,6 @@ public class TestDish {
 		int id = d.getID();
 		assertEquals(2, id);
 	}
+	
+
 }

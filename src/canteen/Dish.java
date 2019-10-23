@@ -1,15 +1,16 @@
 package canteen;
 
+import java.io.*;
 
 public class Dish implements Item {
 	private String name;
 	private double price;
 	private int id;
 	
-	public Dish(String s, double d, int i) {
+	public Dish(String s, double d, int i) throws IllegalArgumentException {
 		this.name = s;
 		if(d < 0)
-			this.price = -1.0;
+			throw new IllegalArgumentException("Negative price");
 		else
 			this.price = d;
 		this.id = i;

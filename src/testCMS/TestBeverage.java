@@ -1,10 +1,12 @@
 package testCMS;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
 import canteen.Beverage;
+import canteen.Dish;
 
 public class TestBeverage {
 	
@@ -24,16 +26,18 @@ public class TestBeverage {
 	
 	@Test
 	public void bev_getPrice3() {
-		Beverage b = new Beverage("Carlsberg ofc", -0.01, 1);
-		double price = b.getPrice();
-		assertEquals(-1.0, price, 0);
+		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
+			new Beverage("Carlsberg ofc", -0.01, 1); 
+		});
+		assertEquals("Negative price", ex.getMessage());
 	}	
 	
 	@Test
 	public void bev_getPrice4() {
-		Beverage b = new Beverage("Carlsberg ofc", -10.0, 1);
-		double price = b.getPrice();
-		assertEquals(-1.0, price, 0);
+		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
+			new Beverage("Carlsberg ofc", -10.0, 1); 
+		});
+		assertEquals("Negative price", ex.getMessage());
 	}	
 	
 	@Test
