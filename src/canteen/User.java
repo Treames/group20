@@ -20,11 +20,15 @@ public class User {
 	}
 
 	public void addToBalance(double d) {
-		balance += d;
+		if(d > 0)
+			balance += d;
+		// Else Exception?
 	}
 
 	public void removeFromBalance(double d) {
-		balance -= d;
+		if(balance - d > 0)
+			balance -= d;
+		// Else exception?
 	}
 
 	private int getID() {

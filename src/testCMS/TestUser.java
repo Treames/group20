@@ -34,11 +34,28 @@ public class TestUser {
 	}
 	
 	@Test
+	public void user_add_to_balance2() {
+		User u = new User("Rick",1113, 50.0);
+		u.addToBalance(-10.0);
+		double balance = u.getBalance();
+		assertEquals(50, balance, 0);
+	}
+	
+	@Test
 	public void user_remove_from_balance() {
 		User u4 = new User("Morty",1114,20.34);
 		//double balance = u1.setBalance(20);
 		u4.removeFromBalance(3);
 		double balance = u4.getBalance();
 		assertEquals(17.34,balance,0.0001);
+	}
+	
+	@Test
+	public void user_remove_from_balance2() {
+		User u = new User("Morty", 1115, 3.00);
+		u.removeFromBalance(3.50);
+		double balance = u.getBalance();
+		assertEquals(3.00, balance, 0);
+		
 	}
 }
