@@ -13,6 +13,7 @@ public class User {
 	private int id;
 	private double balance;
 
+	//TODO: concurrency?
 	public User(String s, int i, double d) throws IllegalArgumentException {
 		this.name = s;
 		this.id = i;
@@ -25,17 +26,18 @@ public class User {
 	public void addToBalance(double d) throws IllegalArgumentException {
 		if(d > 0)
 			balance += d;
-		// Else Exception?
+		else 
+			throw new IllegalArgumentException("Negative or zero add");
 	}
 
-	public void removeFromBalance(double d) throws IllegalArgumentException {
+	public void removeFromBalance(double d) throws InsufficientBalanceException {
 		if(balance - d > 0)
 			balance -= d;
 		else
-			throw new IllegalArgumentException("Insufficient balance");
+			throw new InsufficientBalanceException("Insufficient balance");
 	}
 
-	private int getID() {
+	public int getID() {
 		return this.id;
 	}
 

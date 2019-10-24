@@ -7,7 +7,10 @@ public class PromoItem implements Item {
 	
 	public PromoItem(Item i, double d) {
 		this.item = i;
-		this.discount = d;
+		if(d > 0 && d < 1.00)
+			this.discount = d;
+		else
+			throw new IllegalArgumentException("Discount out of bounds");
 	}
 	
 	public double getPrice() {

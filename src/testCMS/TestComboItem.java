@@ -14,6 +14,7 @@ import canteen.Menu;
 
 public class TestComboItem {
 	
+	//TODO: Test exceptions: empty combo list, discount < 0.00 & discount > 1.00
 	@Test
 	public void combo_getPrice1() {
 		Dish d1 = new Dish("Durum", 70.00, 1);

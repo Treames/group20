@@ -9,6 +9,8 @@ import canteen.PromoItem;
 
 public class TestPromoItem {
 	
+	//TODO: Test exceptions: discount < 0.00 & discount > 1.00
+	
 	@Test
 	public void promo_getPrice1() {
 		Dish d = new Dish("Pizza", 50.00, 1);

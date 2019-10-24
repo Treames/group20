@@ -8,9 +8,17 @@ public class ComboItem implements Item{
 	private Double discount;
 	private int id;
 	
-	public ComboItem(ArrayList<Item> l, double d, int i) {
-		this.items = l;
-		this.discount = d;
+	public ComboItem(ArrayList<Item> l, double d, int i) throws IllegalArgumentException {
+		if(l.isEmpty())
+			throw new IllegalArgumentException("Empty item list");
+		else
+			this.items = l;
+		
+		if(d > 0 && d < 1.00)
+			this.discount = d;
+		else
+			throw new IllegalArgumentException("Discount out of bounds");
+		
 		this.id = i;
 	}
 	
@@ -23,7 +31,6 @@ public class ComboItem implements Item{
 	}
 
 	public int getID() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 

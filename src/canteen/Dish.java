@@ -17,12 +17,10 @@ public class Dish implements Item {
 	}
 
 	public double getPrice() {
-		// TODO Auto-generated method stub
 		return this.price;
 	}
 
 	public int getID() {
-		// TODO Auto-generated method stub
 		return this.id;
 	}
 }

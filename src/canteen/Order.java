@@ -6,15 +6,15 @@ public class Order {
 	private ArrayList<Item> items;
 	
 	public void addToOrder(Item i) {
-		
+		items.add(i);
 	}
 	
 	public void removeFromOrder(Item i) {
-		
+		items.remove(i);
 	}
 	
-	public void getItems() {
-		
+	public ArrayList<Item> getItems() {
+		return items;
 	}
 
 	public double getPrice() {
