@@ -1,6 +1,7 @@
 package testCMS;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 
@@ -50,4 +51,50 @@ public class TestComboItem {
 		int id = combo.getID();
 		assertEquals(3, id, 0.001);
 	}
+	@Test
+	public void combo_item_1() {
+		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
+			ArrayList<Item> itemList = new ArrayList<Item>();
+			ComboItem combo = new ComboItem(itemList, 0.8,3);
+			
+		});
+		assertEquals("Empty item list",ex.getMessage());
+	}
+	@Test
+	public void combo_item_2() {
+		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
+			Dish d1 = new Dish("Durum", 70.00, 1);
+			Beverage b1 = new Beverage("Ginger Ale", 30.00, 2);
+			
+			ArrayList<Item> someList = new ArrayList<Item>();
+			Menu m = new Menu(someList);
+			m.addItem(d1);
+			m.addItem(b1);
+			ArrayList<Item> itemList = new ArrayList<Item>();
+			itemList.add(d1);
+			itemList.add(b1);		
+			new ComboItem(itemList, -3,3);
+			
+		});
+		assertEquals("Discount out of bounds",ex.getMessage());
+	}
+	@Test
+	public void combo_item_3() {
+		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
+			Dish d1 = new Dish("Durum", 70.00, 1);
+			Beverage b1 = new Beverage("Ginger Ale", 30.00, 2);
+			
+			ArrayList<Item> someList = new ArrayList<Item>();
+			Menu m = new Menu(someList);
+			m.addItem(d1);
+			m.addItem(b1);
+			ArrayList<Item> itemList = new ArrayList<Item>();
+			itemList.add(d1);
+			itemList.add(b1);		
+			new ComboItem(itemList, 120,3);
+			
+		});
+		assertEquals("Discount out of bounds",ex.getMessage());
+	}
+	
 }
