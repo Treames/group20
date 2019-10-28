@@ -1,6 +1,7 @@
 package testCMS;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
@@ -25,5 +26,21 @@ public class TestPromoItem {
 		PromoItem i = new PromoItem(d, 0.8);
 		int promoID = i.getID();
 		assertEquals(1, promoID);
+	}
+	@Test
+	public void promo_item1() {
+		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
+			Dish d = new Dish("Pizza", 50.00, 1);
+			new PromoItem(d, -2);
+		});
+		assertEquals("Discount out of bounds",ex.getMessage());
+	}
+	@Test
+	public void promo_item2() {
+		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
+			Dish d = new Dish("Pizza", 50.00, 1);
+			new PromoItem(d, 2);
+		});
+		assertEquals("Discount out of bounds",ex.getMessage());
 	}
 }
