@@ -6,7 +6,11 @@ public class Beverage implements Item {
 	private int id;
 	
 	public Beverage(String s, double d, int i) {
-		this.name = s;
+		if(s.length() < 1)
+			throw new IllegalArgumentException("Empty name");
+		else
+			this.name = s;
+		
 		if(d < 0)
 			throw new IllegalArgumentException("Negative price");
 		else

@@ -8,7 +8,11 @@ public class Dish implements Item {
 	private int id;
 	
 	public Dish(String s, double d, int i) throws IllegalArgumentException {
-		this.name = s;
+		if(s.length() < 1)
+			throw new IllegalArgumentException("Empty name");
+		else
+			this.name = s;
+		
 		if(d < 0)
 			throw new IllegalArgumentException("Negative price");
 		else

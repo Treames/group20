@@ -14,13 +14,18 @@ public class User {
 	private double balance;
 
 	//TODO: concurrency?
-	public User(String s, int i, double d) throws IllegalArgumentException {
-		this.name = s;
-		this.id = i;
+	public User(String s, double d, int i) throws IllegalArgumentException {
+		if(s.length() < 1)
+			throw new IllegalArgumentException("Empty name");
+		else
+			this.name = s;
+		
 		if(d < 0)
 			throw new IllegalArgumentException("Negative balance");
 		else
 			this.balance = d;
+		
+		this.id = i;
 	}
 
 	public void addToBalance(double d) throws IllegalArgumentException {
