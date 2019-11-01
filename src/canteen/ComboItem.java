@@ -2,7 +2,7 @@ package canteen;
 
 import java.util.ArrayList;
 
-public class ComboItem implements Item{
+public class ComboItem implements Item {
 	
 	private ArrayList<Item> items;
 	private Double discount;

@@ -11,7 +11,7 @@ public class KitchenInterface implements UserInterface{
 	}
 
 	public void display() {
-		// TODO Auto-generated method stub
+		System.out.println("Test KitchenInterface");
 		
 	}
 	

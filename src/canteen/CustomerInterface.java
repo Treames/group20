@@ -1,15 +1,20 @@
 package canteen;
 
+import java.io.*;
 
-public class CustomerInterface implements UserInterface {
+public class CustomerInterface implements UserInterface { 
 	private Order customerOrder;
+	
+	public CustomerInterface(int i) {
+		System.out.println("Test CustomerInterface " + i);
+	}
+	
 	public void update(OrderProcessor op) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	public void display() {
-		// TODO Auto-generated method stub
 		
 	}
 	

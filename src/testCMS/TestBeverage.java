@@ -46,4 +46,13 @@ public class TestBeverage {
 		int id = b.getID();
 		assertEquals(2, id);
 	}
+	
+	@Test
+	public void bev_emptyName() {
+		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
+			new Beverage("", -10.0, 1); 
+		});
+		assertEquals("Empty name", ex.getMessage());
+	}
+	
 }

@@ -47,4 +47,11 @@ public class TestDish {
 	}
 	
 
+	@Test
+	public void dish_emptyName() {
+		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
+			new Dish("", 1.00, 1); 
+		});
+		assertEquals("Empty name", ex.getMessage());
+	}
 }

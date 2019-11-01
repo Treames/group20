@@ -27,6 +27,7 @@ public class TestPromoItem {
 		int promoID = i.getID();
 		assertEquals(1, promoID);
 	}
+	
 	@Test
 	public void promo_item1() {
 		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
@@ -35,6 +36,7 @@ public class TestPromoItem {
 		});
 		assertEquals("Discount out of bounds",ex.getMessage());
 	}
+	
 	@Test
 	public void promo_item2() {
 		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
