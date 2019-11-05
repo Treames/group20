@@ -4,11 +4,17 @@ import java.util.ArrayList;
 
 public class ComboItem implements Item {
 	
+	private String name;
 	private ArrayList<Item> items;
 	private Double discount;
 	private int id;
 	
-	public ComboItem(ArrayList<Item> l, double d, int i) throws IllegalArgumentException {
+	public ComboItem(String n, ArrayList<Item> l, double d, int i) throws IllegalArgumentException {
+		if(n.length() < 1) 
+			throw new IllegalArgumentException("Empty name");
+		else
+			name = n;
+		
 		if(l.isEmpty())
 			throw new IllegalArgumentException("Empty item list");
 		else
@@ -31,7 +37,11 @@ public class ComboItem implements Item {
 	}
 
 	public int getID() {
-		return id;
+		return this.id;
+	}
+	
+	public String getName() {
+		return this.name;
 	}
 
 }

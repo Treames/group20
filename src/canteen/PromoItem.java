@@ -21,4 +21,8 @@ public class PromoItem implements Item {
 		return item.getID();
 	}
 
+	public String getName() {
+		return this.item.getName();
+	}
+	
 }

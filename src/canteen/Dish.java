@@ -27,4 +27,8 @@ public class Dish implements Item {
 	public int getID() {
 		return this.id;
 	}
+	
+	public String getName() {
+		return this.name;
+	}
 }

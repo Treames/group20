@@ -4,6 +4,12 @@ import java.util.ArrayList;
 
 public class Order {
 	private ArrayList<Item> items;
+	private int id;
+	
+	public Order(int _id) {
+		id = _id;
+		items = new ArrayList<Item>();
+	}
 	
 	public void addToOrder(Item i) {
 		items.add(i);
@@ -14,7 +20,15 @@ public class Order {
 	}
 	
 	public ArrayList<Item> getItems() {
-		return items;
+		ArrayList<Item> allItems = new ArrayList<Item>();
+		for(Item i: items) {
+			allItems.add(i);
+		}
+		return allItems;
+	}
+	
+	public int getID() {
+		return this.id;
 	}
 
 	public double getPrice() {
