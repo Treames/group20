@@ -48,6 +48,13 @@ public class TestBeverage {
 	}
 	
 	@Test
+	public void bev_getName() {
+		Beverage b = new Beverage("Tuborg, danish again", 50.00, 2);
+		String name = b.getName();
+		assertEquals("Tuborg, danish again", name);
+	}
+	
+	@Test
 	public void bev_emptyName() {
 		Throwable ex = assertThrows(IllegalArgumentException.class, () -> {
 			new Beverage("", -10.0, 1); 

@@ -45,6 +45,12 @@ public class TestDish {
 		int id = d.getID();
 		assertEquals(2, id);
 	}
+	@Test
+	public void dish_getname() {
+		Dish d = new Dish("chicken feet", 1.00, 2);
+		String name = d.getName();
+		assertEquals("chicken feet", name);
+	}
 	
 
 	@Test

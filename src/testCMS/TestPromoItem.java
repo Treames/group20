@@ -27,6 +27,13 @@ public class TestPromoItem {
 		int promoID = i.getID();
 		assertEquals(1, promoID);
 	}
+	@Test
+	public void promo_getName() {
+		Dish d = new Dish("Pizza", 50.00, 1);
+		PromoItem i = new PromoItem(d, 0.8);
+		String name = i.getName();
+		assertEquals("Pizza", name);
+	}
 	
 	@Test
 	public void promo_item1() {
