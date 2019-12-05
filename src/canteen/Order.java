@@ -19,7 +19,7 @@ public class Order {
 	
 	public ArrayList<Item> getItems() {
 		return order;
-	}
+	} 
 
 	public double getPrice() {
 		double price = 0;

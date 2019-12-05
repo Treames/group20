@@ -1,16 +1,19 @@
 package canteen;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class CustomerInterface implements UserInterface { 
 	private Order customerOrder;
 	private int interfaceID;
 	private int orderNumber;
+	private int orderID;
 	
 	public CustomerInterface(int i) {
-		interfaceID = i;
-		orderNumber = 0;
-		System.out.println("Test CustomerInterface " + interfaceID);
+		this.interfaceID = i;
+		this.orderNumber = 0;
+		this.orderID = 0;
+		System.out.println("Created CustomerInterface " + interfaceID);
 		newOrder();
 	}
 	
@@ -33,6 +36,8 @@ public class CustomerInterface implements UserInterface {
 
 	public void sendOrder() {
 		// TODO Send order
+		double price = customerOrder.getPrice();
+		System.out.println("ID: " + orderID + " Total price: $" + price);
 		
 		customerOrder = null;
 		orderNumber++;
@@ -45,8 +50,9 @@ public class CustomerInterface implements UserInterface {
 			orderID_string = "0" + String.valueOf(orderNumber);
 		else
 			orderID_string = String.valueOf(orderNumber);
-		int orderID = Integer.valueOf(String.valueOf(interfaceID) + orderID_string);
-		customerOrder = new Order(orderID);
-		System.out.println(orderID);
+		orderID = Integer.valueOf(String.valueOf(interfaceID) + orderID_string);
+		
+		ArrayList<Item> itemsInOrder = new ArrayList<Item>();
+		customerOrder = new Order(itemsInOrder);
 	}
 }

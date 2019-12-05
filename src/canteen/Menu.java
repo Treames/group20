@@ -15,7 +15,7 @@ public class Menu {
 		for(int i = 0; i < menuItems.size(); i++) {
 			items[i] = menuItems.get(i);
 		}
-		return items;
+		return items; 
 	}
 	
 	public void addItem(Item i) {
