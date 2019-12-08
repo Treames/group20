@@ -16,9 +16,12 @@ import canteen.Order;
 public class TestOrder {
 	@Test
 	public void Order_Test_add() {
-		Order o1 = new Order(5);
+		
+		ArrayList<Item> someList = new ArrayList<Item>();
 		Dish d = new Dish("Chicken", 10.00, 1);
+		Order o1 = new Order(someList);
 		o1.addToOrder(d);
+		
 		ArrayList<Item> a1 = o1.getItems();
 		int size = a1.size();
 		assertEquals(1,size);
@@ -26,9 +29,10 @@ public class TestOrder {
 	
 	@Test
 	public void Order_Test_remove() {
-		Order o1 = new Order(5);
+		ArrayList<Item> someList = new ArrayList<Item>();
 		Dish d = new Dish("Chicken", 10.00, 1);
 		Dish d2 = new Dish("Chicken feet", 10.00, 1);
+		Order o1 = new Order(someList);
 		o1.addToOrder(d);
 		o1.addToOrder(d2);
 		o1.removeFromOrder(d);
@@ -37,16 +41,13 @@ public class TestOrder {
 		assertEquals(1,size);
 	}
 	
-	@Test
-	public void Order_Test_ID() {
-		Order o1 = new Order(3);
-		int id = o1.getID();
-		assertEquals(3, id);
-	}
+
+	
 	
 	@Test
 	public void Order_Test_getPrice() {
-		Order o1 = new Order(5);
+		ArrayList<Item> someList = new ArrayList<Item>();
+		Order o1 = new Order(someList);
 		Dish d = new Dish("Chicken", 10.00, 1);
 		Dish d2 = new Dish("Chicken feet", 10.00, 1);
 		o1.addToOrder(d);
