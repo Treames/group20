@@ -16,8 +16,8 @@ public class TestMenu {
 	public void menu_default() {
 		ArrayList<Item> someList = new ArrayList<Item>();
 		Menu m = new Menu(someList);
-		Item[] items = m.getItems();
-		int length = items.length;
+		ArrayList<Item> items = m.getItems();
+		int length = items.size();
 		assertEquals(0, length);
 	}
 	
@@ -27,8 +27,8 @@ public class TestMenu {
 		ArrayList<Item> someList = new ArrayList<Item>();
 		Menu m = new Menu(someList);
 		m.addItem(d);
-		Item[] items = m.getItems();
-		int length = items.length;
+		ArrayList<Item> items = m.getItems();
+		int length = items.size();
 		assertEquals(1, length);
 	}
 	
@@ -38,8 +38,8 @@ public class TestMenu {
 		ArrayList<Item> someList = new ArrayList<Item>();
 		someList.add(d);
 		Menu m = new Menu(someList);
-		Item[] items = m.getItems();
-		int length = items.length;
+		ArrayList<Item> items = m.getItems();
+		int length = items.size();
 		assertEquals(1, length);
 	}
 	
@@ -53,8 +53,8 @@ public class TestMenu {
 		someList.add(d1);
 		someList.add(d2);
 		Menu m = new Menu(someList);
-		Item[] items = m.getItems();
-		int length = items.length;
+		ArrayList<Item> items = m.getItems();
+		int length = items.size();
 		assertEquals(3, length);
 	}
 
@@ -69,8 +69,8 @@ public class TestMenu {
 		someList.add(d2);
 		Menu m = new Menu(someList);
 		m.removeItem(d);
-		Item[] items = m.getItems();
-		int length = items.length;
+		ArrayList<Item> items = m.getItems();
+		int length = items.size();
 		assertEquals(2, length);
 	}
 	
@@ -84,9 +84,9 @@ public class TestMenu {
 		m.addItem(d);
 		m.addItem(d1);
 		m.addItem(d2);
-		assertEquals(3, m.getItems().length);
+		assertEquals(3, m.getItems().size());
 		m.removeItem(d1);
-		assertEquals(2, m.getItems().length);
+		assertEquals(2, m.getItems().size());
 	}
 	
 	@Test
@@ -95,6 +95,6 @@ public class TestMenu {
 		ArrayList<Item> someList = new ArrayList<Item>();
 		Menu m = new Menu(someList);
 		m.removeItem(d);
-		assertEquals(0, m.getItems().length);
+		assertEquals(0, m.getItems().size());
 	}
 }

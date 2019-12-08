@@ -1,5 +1,5 @@
 package canteen;
 
 public interface Observer {
-	public void update(OrderProcessor op);
+	public void update(Menu m);
 }

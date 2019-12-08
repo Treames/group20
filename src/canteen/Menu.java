@@ -24,7 +24,6 @@ public class Menu {
 	public void addItem(Item i) {
 		this.menuItems.add(i);
 		updateObservers();
-
 	}
 	
 	public void removeItem(Item i) {

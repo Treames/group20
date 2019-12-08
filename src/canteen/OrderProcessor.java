@@ -7,7 +7,7 @@ public class OrderProcessor {
 	
 	public void updateObservers(){
 		for(Observer o: observers) {
-			o.update(this);
+			//o.update(this);
 		}
 	}
 	

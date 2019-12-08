@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class Order {
 	private ArrayList<Item> order;
+	private int orderID;
 	
-	public Order(ArrayList<Item> o) {
+	public Order(ArrayList<Item> o, int i) {
 		this.order = o;
+		this.orderID = i;
 	}
 	
 	public void addToOrder(Item i) {
@@ -27,5 +29,9 @@ public class Order {
 			price += i.getPrice();
 		}
 		return price;
+	}
+	
+	public int getID() {
+		return orderID;
 	}
 }
