@@ -12,11 +12,11 @@ public class Menu {
 		this.menuItems = m;
 	}
 	
-	//Used to provide CustomerInterface with the currently available menu items
-	public Item[] getItems() {
-		Item[] items = new Item[menuItems.size()];
-		for(int i = 0; i < menuItems.size(); i++) {
-			items[i] = menuItems.get(i);
+	//Used to provide CustomerInterface with a shallow copy of the currently available menu items
+	public ArrayList<Item> getItems() {
+		ArrayList<Item> items = new ArrayList<Item>();
+		for(Item i: menuItems) {
+			items.add(i);
 		}
 		return items; 
 	}
