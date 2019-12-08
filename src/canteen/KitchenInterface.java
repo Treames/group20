@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class KitchenInterface implements UserInterface {
 	private ArrayList<Order> currentOrders;
+	private ArrayList<Item> menuItems;
 	
-	public void update(OrderProcessor op) {
-		// TODO Auto-generated method stub
-		
+	public void update(Menu m) {
+		menuItems = m.getItems();		
 	}
 
 	public void display() {
