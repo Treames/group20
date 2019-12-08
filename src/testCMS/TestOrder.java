@@ -19,7 +19,7 @@ public class TestOrder {
 		
 		ArrayList<Item> someList = new ArrayList<Item>();
 		Dish d = new Dish("Chicken", 10.00, 1);
-		Order o1 = new Order(someList);
+		Order o1 = new Order(someList, 0);
 		o1.addToOrder(d);
 		
 		ArrayList<Item> a1 = o1.getItems();
@@ -32,7 +32,7 @@ public class TestOrder {
 		ArrayList<Item> someList = new ArrayList<Item>();
 		Dish d = new Dish("Chicken", 10.00, 1);
 		Dish d2 = new Dish("Chicken feet", 10.00, 1);
-		Order o1 = new Order(someList);
+		Order o1 = new Order(someList, 0);
 		o1.addToOrder(d);
 		o1.addToOrder(d2);
 		o1.removeFromOrder(d);
@@ -47,7 +47,7 @@ public class TestOrder {
 	@Test
 	public void Order_Test_getPrice() {
 		ArrayList<Item> someList = new ArrayList<Item>();
-		Order o1 = new Order(someList);
+		Order o1 = new Order(someList, 0);
 		Dish d = new Dish("Chicken", 10.00, 1);
 		Dish d2 = new Dish("Chicken feet", 10.00, 1);
 		o1.addToOrder(d);

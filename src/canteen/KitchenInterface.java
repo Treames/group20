@@ -8,7 +8,7 @@ public class KitchenInterface implements Runnable, UserInterface {
 	private ArrayList<Order> currentOrders;
 	private ArrayList<Item> menuItems;
 	
-	static Semaphore semaphore = new Semaphore(1);
+	static Semaphore semaphore = new Semaphore(1, true);
 	
 	KitchenInterface() {
 		currentOrders = new ArrayList<Order>();
