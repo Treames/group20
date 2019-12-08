@@ -8,6 +8,7 @@ public class CustomerInterface implements UserInterface {
 	private int interfaceID;
 	private int orderNumber;
 	private int orderID;
+	private ArrayList<Item> menuItems;
 	
 	public CustomerInterface(int i) {
 		this.interfaceID = i;
@@ -17,9 +18,8 @@ public class CustomerInterface implements UserInterface {
 		newOrder();
 	}
 	
-	public void update(OrderProcessor op) {
-		// TODO Auto-generated method stub
-		
+	public void update(Menu m) {
+		menuItems = m.getItems();		
 	}
 
 	public void display() {
