@@ -91,13 +91,13 @@ public class CustomerInterface implements Runnable, UserInterface {
 		//printMenu(menuItems);
 		
 		int nOrders = random.nextInt(100);
-		int orderTime = random.nextInt(100) + 10;
+		int orderTime = random.nextInt(50) + 50;
 		try {
 			for(int i = 0; i < nOrders; i++) {
 				Thread.sleep(orderTime);
 				
 				long currentTime = Instant.now().getEpochSecond();
-				if(currentTime > openTime + 10) break;
+				if(currentTime > openTime + 17) break;
 				
 				int nItems = random.nextInt(5) + 1; // Minimum 1 item
 				for(int j = 0; j < nItems; j++) { // Amount of items to order

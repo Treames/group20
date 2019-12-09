@@ -89,15 +89,14 @@ public class KitchenInterface implements Runnable, UserInterface {
 		Random random = new Random();
 		long currentTime = Instant.now().getEpochSecond();
 		
-		while(currentOrders.size() >= 0 && currentTime < openTime + 10) {
-			int processDelay = random.nextInt(25);
-			try {
-				Thread.sleep(processDelay);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
+		while(currentOrders.size() >= 0 && currentTime < openTime + 20) {
 			if(currentOrders.size() > 0) {
+				int processDelay = random.nextInt(25);
+				try {
+					Thread.sleep(processDelay);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				int toComplete = random.nextInt(3);
 				
 				toComplete = Integer.min(toComplete, currentOrders.size());
@@ -114,6 +113,7 @@ public class KitchenInterface implements Runnable, UserInterface {
 	
 	private void printClose() {
 		DecimalFormat df = new DecimalFormat("####0.00");
+		System.out.println("\n------------------------------");
 		System.out.println("Order completed: " + completed);
 		System.out.println("Sales: $" + df.format(sales));
 	}
