@@ -1,5 +1,6 @@
 package canteen;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -29,31 +30,16 @@ public class Canteen {
 		}
 	}
 	
-//	private void simulateCustomer() {
-//		Random random = new Random();
-//		ArrayList<Item> menuItems = menu.getItems();
-//		printMenu(menuItems);
-//		
-//		for(int i = 0; i < 10; i++) { // 10 Fake orders
-//			int rScreen = random.nextInt(customerScreens.size());
-//			int nItems = random.nextInt(5) + 1; // Minimum 1 item
-//			for(int j = 0; j < nItems; j++) { // Amount of items to order
-//				int rItem = random.nextInt(menuItems.size()); // Random item selected
-//				customerScreens.get(rScreen).addToOrder(menuItems.get(rItem));
-//			}
-//			customerScreens.get(rScreen).sendOrder();
-//		}
-//	}
-	
 	public void runInterfaces() {
-		kitchenScreen = new KitchenInterface();
+		long startTime = Instant.now().getEpochSecond();
+		kitchenScreen = new KitchenInterface(startTime);
 		customerScreens = new ArrayList<CustomerInterface>();
 		op = new OrderProcessor();
 		
 		fillMenu();
 		
 		for(int i = 1; i <= 5; i++) {
-			CustomerInterface temp = new CustomerInterface(i, kitchenScreen);
+			CustomerInterface temp = new CustomerInterface(i, kitchenScreen, startTime);
 			temp.update(menu);
 			customerScreens.add(temp);
 		}
@@ -62,8 +48,7 @@ public class Canteen {
 			CustomerInterface temp = customerScreens.get(i);
 			new Thread(() -> temp.simulateCustomer()).start();
 		}
-		//simulateCustomer();
 		
-		//kitchenScreen.display();
+		new Thread(() -> kitchenScreen.simulateKitchen()).start();
 	}
 }

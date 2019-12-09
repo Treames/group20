@@ -2,6 +2,7 @@ package canteen;
 
 import java.io.*;
 import java.text.DecimalFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,12 +13,19 @@ public class CustomerInterface implements Runnable, UserInterface {
 	private int orderNumber;
 	private int orderID;
 	private ArrayList<Item> menuItems;
+	private long openTime;
 	
-	public CustomerInterface(int i, KitchenInterface k) {
+	/**
+	 * @param i ID of interface
+	 * @param k Kitchen linked to customer interface
+	 * @param t Time kitchen opened
+	 */
+	public CustomerInterface(int i, KitchenInterface k, long t) {
 		this.kitchen = k;
 		this.interfaceID = i;
 		this.orderNumber = 0;
 		this.orderID = 0;
+		this.openTime = t;
 		System.out.println("Created CustomerInterface " + interfaceID);
 		newOrder();
 	}
@@ -26,6 +34,9 @@ public class CustomerInterface implements Runnable, UserInterface {
 		simulateCustomer();
 	}
 	
+	/**
+	 * @param m Menu to update for printing
+	 */
 	public void update(Menu m) {
 		menuItems = m.getItems();		
 	}
@@ -34,18 +45,24 @@ public class CustomerInterface implements Runnable, UserInterface {
 		
 	}
 	
+	/**
+	 * @param i Item to add to order
+	 */
 	public void addToOrder(Item i){
 		customerOrder.addToOrder(i);
 	}
 	
+	/**
+	 * @param i Item to remove from order
+	 */
 	public void removeFromOrder(Item i) {
 		customerOrder.removeFromOrder(i);
 	}
 
-	public void sendOrder() {
+	private void sendOrder() {
 		DecimalFormat df = new DecimalFormat("####0.00");
 		double price = customerOrder.getPrice();
-		System.out.println("ID: " + orderID + " Total price: $" + df.format(price));
+		System.out.println("[C] ID: " + orderID + " Total price: $" + df.format(price));
 		
 		kitchen.receiveOrder(customerOrder);
 		
@@ -73,16 +90,26 @@ public class CustomerInterface implements Runnable, UserInterface {
 		//ArrayList<Item> menuItems = menuItems.getItems();
 		//printMenu(menuItems);
 		
-		for(int i = 0; i < 10; i++) { // 10 Fake orders
-			//int rScreen = random.nextInt(customerScreens.size());
-			int nItems = random.nextInt(5) + 1; // Minimum 1 item
-			for(int j = 0; j < nItems; j++) { // Amount of items to order
-				int rItem = random.nextInt(menuItems.size()); // Random item selected
-				addToOrder(menuItems.get(rItem));
+		int nOrders = random.nextInt(100);
+		int orderTime = random.nextInt(100) + 10;
+		try {
+			for(int i = 0; i < nOrders; i++) {
+				Thread.sleep(orderTime);
+				
+				long currentTime = Instant.now().getEpochSecond();
+				if(currentTime > openTime + 10) break;
+				
+				int nItems = random.nextInt(5) + 1; // Minimum 1 item
+				for(int j = 0; j < nItems; j++) { // Amount of items to order
+					int rItem = random.nextInt(menuItems.size()); // Random item selected
+					addToOrder(menuItems.get(rItem));
+				}
+				sendOrder();
 			}
-			sendOrder();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
-	
 }
 

@@ -9,6 +9,13 @@ public class ComboItem implements Item {
 	private Double discount;
 	private int id;
 	
+	/**
+	 * @param n Name of combo set
+	 * @param l List of items in set
+	 * @param d Discount compared to regular
+	 * @param i item ID
+	 * @throws IllegalArgumentException Empty name or negative price
+	 */
 	public ComboItem(String n, ArrayList<Item> l, double d, int i) throws IllegalArgumentException {
 		if(n.length() < 1) 
 			throw new IllegalArgumentException("Empty name");
@@ -28,6 +35,9 @@ public class ComboItem implements Item {
 		this.id = i;
 	}
 	
+	/**
+	 * @return double discounted price
+	 */
 	public double getPrice() {
 		double price = 0;
 		for(Item i: items) {
@@ -36,10 +46,16 @@ public class ComboItem implements Item {
 		return price * discount;
 	}
 
+	/**
+	 * @return int item ID
+	 */
 	public int getID() {
 		return this.id;
 	}
 	
+	/**
+	 * @return String Name of combo
+	 */
 	public String getName() {
 		return this.name;
 	}
